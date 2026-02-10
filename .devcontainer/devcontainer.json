@@ -5,7 +5,7 @@
 //
 {
     "name": "workflow-practice",
-    "image": "ghcr.io/nextflow-io/training:v2.3.0",
+    "image": "ghcr.io/nextflow-io/training:2.3.0",
     "workspaceFolder": "/workspaces/workflow-practice",
     "remoteUser": "root",
     "remoteEnv": {
