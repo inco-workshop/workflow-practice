@@ -1,7 +1,0 @@
-name: chord
-channels:
-  - conda-forge
-  - bioconda
-  - defaults
-dependencies:
-  - bioconda::hmftools-chord=2.1.0

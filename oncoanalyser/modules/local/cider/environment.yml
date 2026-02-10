@@ -1,7 +1,0 @@
-name: cider
-channels:
-  - conda-forge
-  - bioconda
-  - defaults
-dependencies:
-  - bioconda::hmftools-cider=1.0.4
