@@ -1,23 +1,31 @@
-25.09.08, (주)인실리코젠, 박소희
 
-# 아주대 인공지능 부트캠프 2회차 3강
 
-## 목차
+# 인코워크숍 글로컬대학 - 부산대학교
 
-- [1. 실습 환경 세팅](#1-실습-환경-세팅)
-- [2. Nextflow 실습](#2-nextflow-실습)
-  - [2.1 Nextflow 기본](#21-nextflow-기본)
-  - [2.2 Nextflow 출력 경로 설정](#22-nextflow-출력-경로-설정)
-  - [2.3 Nextflow 변수 설정](#23-nextflow-변수-설정)
-- [3. nf-core/oncoanalyser 실습](#3-nf-coreoncoanalyser-실습)
+[1. 실습 환경 세팅](#1-실습-환경-세팅)
 
-## 1. 실습 환경 세팅
+[2. Nextflow 실습](#2-nextflow-실습)
 
-1. 오른쪽 링크에 접속합니다. https://github.com/shpark-inco/ajou-bootcamp
+​	[2.1 Nextflow 기본](#21-nextflow-기본)
 
-2. [<> Code] 클릭 - [Create codespace on main] 클릭
+​	[2.2 Nextflow 출력 경로 설정](#22-nextflow-출력-경로-설정)
 
-3. 아래와 같은 창이 뜹니다.
+​	[2.3 Nextflow 변수 설정](#23-nextflow-변수-설정)
+
+[3. nf-core/oncoanalyser 실습](#3-nf-coreoncoanalyser-실습)
+
+---------
+
+## 1. 리눅스 명령어
+
+| 리눅스 명령어 | 기능                 |
+| ------------- | -------------------- |
+| ll            | 현재 디렉토리 확인   |
+| cd            | 디렉토리로 이동      |
+| cd ..         | 하위 디렉토리로 이동 |
+| vim           | 텍스트 파일 수정     |
+
+
 
 ## 2. Nextflow 실습
 
@@ -31,12 +39,7 @@
 ll
 ```
 
-| 리눅스 명령어 | 기능 |
-| --- | --- |
-| ll | 현재 디렉토리 확인 |
-| cd | 디렉토리로 이동 |
-| cd .. | 하위 디렉토리로 이동 |
-| vim | 텍스트 파일 수정 |
+
 
 **Step 2.** hello-world.nf 스크립트를 살펴봅니다. (process, workflow, output, script)
 
@@ -76,6 +79,8 @@ tree
 cd ..
 ```
 
+
+
 ### 2.2 Nextflow 출력 경로 설정
 
 ---
@@ -106,6 +111,8 @@ nextflow run hello-world.nf -resume
 ```
 
 **Step 5.** `results` 디렉토리에서 결과를 확인합니다.
+
+
 
 ### 2.3 Nextflow 변수 설정
 
@@ -152,6 +159,8 @@ nextflow run hello-world.nf --greeting "Hello, my name is Sohee"
 
 **Step 5.** `results` 디렉토리에서 결과를 확인합니다.
 
+
+
 ## 3. nf-core/oncoanalyser 실습
 
 **Step 1.** `ajou-bootcamp` 디렉토리로 이동합니다. (`cd ..` 활용)
@@ -173,3 +182,7 @@ nextflow pull nf-core/oncoanalyser -r 2.1.0
 ```bash
 nextflow run nf-core/oncoanalyser -r 2.1.0 -profile docker,test --outdir ./
 ```
+
+
+
+26.02.10, (주)인실리코젠, 박소희
