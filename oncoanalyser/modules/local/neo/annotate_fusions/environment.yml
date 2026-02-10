@@ -1,7 +1,0 @@
-name: neo_annotate_fusions
-channels:
-  - conda-forge
-  - bioconda
-  - defaults
-dependencies:
-  - bioconda::hmftools-isofox=1.7.1

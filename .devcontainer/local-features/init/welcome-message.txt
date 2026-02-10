@@ -1,2 +1,2 @@
-👋 Welcome to the Workflow Practice dev container!
+Welcome to the Workflow Practice dev container!
     Works in GitHub Codespaces, VS Code, or in Docker using the devcontainer CLI

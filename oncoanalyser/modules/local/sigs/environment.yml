@@ -1,7 +1,0 @@
-name: sigs
-channels:
-  - conda-forge
-  - bioconda
-  - defaults
-dependencies:
-  - bioconda::hmftools-sigs=1.2.1

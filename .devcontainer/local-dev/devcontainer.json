@@ -33,7 +33,8 @@
         // Nextflow installation version
         "NXF_HOME": "/workspaces/workflow-practice/.nextflow",
         "NXF_EDGE": "0",
-        "NXF_VER": "25.04.8",
+        "NXF_VER": "25.10.2",
+        "NXF_SYNTAX_PARSER": "v2",
         // Other env vars
         "HOST_PROJECT_PATH": "/workspaces/workflow-practice",
         "SHELL": "/bin/bash" // Ush bash

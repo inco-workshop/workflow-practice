@@ -1,7 +1,0 @@
-name: sambamba_merge
-channels:
-  - conda-forge
-  - bioconda
-  - defaults
-dependencies:
-  - bioconda::sambamba=1.0.1
