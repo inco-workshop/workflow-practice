@@ -4,6 +4,9 @@
 printf "export PS1='\\[\\e[3;36m\\]\${PWD#/workspaces/} ->\\[\\e[0m\\] '\n" >> $HOME/.bashrc
 export PS1='\[\e[3;36m\]${PWD#/workspaces/} ->\[\e[0m\] '
 
+# Install vim
+apt-get update && apt-get install -y vim && apt-get clean && rm -rf /var/lib/apt/lists/*
+
 # Update Nextflow
 nextflow self-update
 nextflow -version
