@@ -12,23 +12,15 @@
         // Nextflow installation version
         "NXF_HOME": "/workspaces/.nextflow",
         "NXF_EDGE": "0",
-        "NXF_VER": "25.10.2",
-        "NXF_SYNTAX_PARSER": "v2",
+        "NXF_VER": "25.04.3",
         // Other env vars
         "HOST_PROJECT_PATH": "/workspaces/workflow-practice",
         "SHELL": "/bin/bash" // Ush bash
     },
-    "containerEnv": {
-        // Docker API compatibility
-        "DOCKER_API_VERSION": "1.43"
-    },
     "onCreateCommand": "bash .devcontainer/setup.sh",
     "customizations": {
         "vscode": {
-            "extensions": [
-                "nf-core.nf-core-extensionpack",
-                "ms-vscode.live-server"
-            ],
+            "extensions": ["nf-core.nf-core-extensionpack"],
             // Use Python from conda
             "settings": {
                 "python.defaultInterpreterPath": "/opt/conda/bin/python"
