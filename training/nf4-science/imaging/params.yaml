@@ -1,3 +1,0 @@
-# Example parameter file for nf-core/molkart
-input: "data/samplesheet.csv"
-outdir: "results"
