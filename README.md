@@ -1,20 +1,175 @@
-# 인코워크숍 글로컬대학 - 부산대학교 교육 실습
+25.09.08, (주)인실리코젠, 박소희
 
-| 강의 시간         | 강의 목차                                      | 강사   |
-| ----------------- | ---------------------------------------------- | ------ |
-| 13:00–13:50       | 오믹스 기반 AI 데이터 및 분석 사례             | 박주희 |
-|                   | - 오믹스 기반 연구 개요                        |        |
-|                   | - 오믹스 데이터 종류 및 구조                   |        |
-|                   | - 오믹스 데이터와 분석의 기본 흐름과 핵심 기법 |        |
-|                   | - 오믹스 데이터 기반 바이브 코딩 및 AI 분석    |        |
-|                   | - 실습 준비                                    |        |
-| 14:00–15:20       | 멀티 오믹스 기반 AI 데이터 분석 실습           | 오승미 |
-|                   | - 바이브 코딩 기초                             |        |
-|                   | - 단일오믹스 분석                              |        |
-|                   | - 멀티오믹스 분석 전략                         |        |
-|                   | - 실전 바이브 코딩 실습                        |        |
-| 15:30~16:50 (80m) | 의료 리포트 자동화 실습                        | 박소희 |
-|                   | - AI 시대의 의료 리포트 트렌드                 |        |
-|                   | - 분석 자동화 파이프라인 설계 및 구조 이해     |        |
-|                   | - 변이 분석 결과 기반 맞춤형 리포트 자동 생성  |        |
-|                   | - 효율적인 분석 환경 만들기                    |        |
+# 아주대 인공지능 부트캠프 2회차 3강
+
+## 목차
+
+- [1. 실습 환경 세팅](#1-실습-환경-세팅)
+- [2. Nextflow 실습](#2-nextflow-실습)
+  - [2.1 Nextflow 기본](#21-nextflow-기본)
+  - [2.2 Nextflow 출력 경로 설정](#22-nextflow-출력-경로-설정)
+  - [2.3 Nextflow 변수 설정](#23-nextflow-변수-설정)
+- [3. nf-core/oncoanalyser 실습](#3-nf-coreoncoanalyser-실습)
+
+## 1. 실습 환경 세팅
+
+1. 오른쪽 링크에 접속합니다. https://github.com/shpark-inco/ajou-bootcamp
+
+2. [<> Code] 클릭 - [Create codespace on main] 클릭
+
+3. 아래와 같은 창이 뜹니다.
+
+## 2. Nextflow 실습
+
+### 2.1 Nextflow 기본
+
+---
+
+**Step 1.** 실습 디렉토리 살펴봅니다. (리눅스 명령어는 아래 참고)
+
+```bash
+ll
+```
+
+| 리눅스 명령어 | 기능 |
+| --- | --- |
+| ll | 현재 디렉토리 확인 |
+| cd | 디렉토리로 이동 |
+| cd .. | 하위 디렉토리로 이동 |
+| vim | 텍스트 파일 수정 |
+
+**Step 2.** hello-world.nf 스크립트를 살펴봅니다. (process, workflow, output, script)
+
+```bash
+# hello-nextflow 디렉토리로 접근합니다.
+cd hello-nextflow
+
+# hello-nextflow 디렉토리의 하위 항목을 출력합니다.
+ll
+
+# hello-world.nf 파일을 읽어봅니다.
+vim hello-world.nf
+```
+
+**Step 3.** hello-world.nf 스크립트를 나갑니다. [ESC] - `:q!` - [ENTER]
+
+**Step 4.** hello-world.nf 스크립트를 구동합니다. (Step, Hash)
+
+```bash
+# nextflow run [nf 스크립트]
+nextflow run hello-world.nf
+```
+
+**Step 5.** 결과를 확인합니다. (work)
+
+```bash
+# hello-world.nf 구동 결과 확인
+ll
+
+# work 디렉토리 접근
+cd work
+
+# work 디렉토리 결과 확인
+tree
+
+# 상위 디렉토리로 이동합니다.
+cd ..
+```
+
+### 2.2 Nextflow 출력 경로 설정
+
+---
+
+**Step 1.** hello-world.nf 파일을 수정합니다.
+
+```bash
+# hello-world.nf 파일 열기
+vim hello-world.nf
+```
+
+**Step 2.** 텍스트 수정 모드로 전환 (키보드 `a`) 후, `publishDir` function 설정합니다. (indentation)
+
+```bash
+process sayHello {
+    publishDir 'results', mode: 'copy'
+
+    output: # 이하 생략
+```
+
+**Step 3.** hello-world.nf 스크립트를 저장 후 나갑니다. [ESC] - `:wq!` - [ENTER]
+
+**Step 4.** hello-world.nf 스크립트를 구동 후, 결과를 확인합니다. (Resume)
+
+```bash
+# nextflow run [nf 스크립트]
+nextflow run hello-world.nf -resume
+```
+
+**Step 5.** `results` 디렉토리에서 결과를 확인합니다.
+
+### 2.3 Nextflow 변수 설정
+
+---
+
+**Step 1.** hello-world.nf 파일을 수정합니다.
+
+```bash
+# hello-world.nf 파일 열기
+vim hello-world.nf
+```
+
+**Step 2.** 텍스트 수정 모드로 전환 (키보드 `a`) 후, `input` 설정, `script` 수정, `workflow` 수정 합니다.
+
+```bash
+process sayHello {
+    publishDir 'results', mode: 'copy'
+
+    input: # 추가(1)
+        val greeting  # 추가(2)
+
+    output:
+        path 'output.txt'
+
+    script:
+    """
+    echo "$greeting" > output.txt # 수정
+    """
+}
+
+workflow {
+    sayHello(params.greeting) # 수정
+}
+```
+
+**Step 3.** hello-world.nf 스크립트를 저장 후 나갑니다. [ESC] - `:wq!` - [ENTER]
+
+**Step 4.** hello-world.nf 스크립트를 구동 후, 결과를 확인합니다. (Resume)
+
+```bash
+# nextflow run [nf 스크립트]
+nextflow run hello-world.nf --greeting "Hello, my name is Sohee"
+```
+
+**Step 5.** `results` 디렉토리에서 결과를 확인합니다.
+
+## 3. nf-core/oncoanalyser 실습
+
+**Step 1.** `ajou-bootcamp` 디렉토리로 이동합니다. (`cd ..` 활용)
+
+**Step 2.** nf-core 에서 파이프라인을 찾아봅니다.
+
+```bash
+nf-core pipelines list
+```
+
+**Step 3.** nf-core/oncoanalyser 실행을 위해 파이프라인을 내려받습니다.
+
+```bash
+nextflow pull nf-core/oncoanalyser -r 2.1.0
+```
+
+**Step 4.** nf-core/oncoanalyser를 구동합니다.
+
+```bash
+nextflow run nf-core/oncoanalyser -r 2.1.0 -profile docker,test --outdir ./
+```
