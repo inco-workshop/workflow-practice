@@ -18,14 +18,14 @@
 
 ## 1. 리눅스 명령어
 
-| 리눅스 명령어 | 기능                 |
-| ------------- | -------------------- |
-| pwd           | 현재 경로 확인       |
-| ll            | 현재 디렉토리 확인   |
-| cd            | 디렉토리로 이동      |
-| cd ..         | 하위 디렉토리로 이동 |
-| cat {파일명}  |                      |
-| vim           | 텍스트 파일 수정     |
+| 리눅스 명령어 | 기능                        |
+| ------------- | --------------------------- |
+| pwd           | 현재 경로 확인              |
+| ll            | 현재 디렉토리 확인          |
+| cd            | 디렉토리로 이동             |
+| cd ..         | 하위 디렉토리로 이동        |
+| cat {파일명}  | {파일} 내용을 터미널에 출력 |
+| vim           | 텍스트 파일 수정            |
 
 
 
@@ -183,7 +183,6 @@ nf-core pipelines list
 
 ```bash
 nextflow pull nf-core/oncoanalyser -r 2.1.0
-
 nextflow pull nf-core/oncoanalyser -r 2.3.0
 ```
 
@@ -191,7 +190,6 @@ nextflow pull nf-core/oncoanalyser -r 2.3.0
 
 ```bash
 nextflow run nf-core/oncoanalyser -r 2.1.0 -profile docker,test --outdir ./
-
 nextflow run nf-core/oncoanalyser -r 2.3.0 -profile docker,test --outdir ./
 ```
 
