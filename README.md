@@ -170,7 +170,15 @@ cat output.txt
 
 ## 3. nf-core/oncoanalyser 실습
 
-**Step 1.** `oncoanalyser` 디렉토리로 이동합니다. (`cd ..` 활용)
+**Step 1.** `oncoanalyser` 디렉토리로 이동합니다.
+
+```bash
+# 현재 위치(hello-nextflow/results)에서 두 단계 위로 올라간 뒤 oncoanalyser로 진입
+cd ../../oncoanalyser
+
+# 현재 위치 확인
+pwd
+```
 
 **Step 2.** nf-core 에서 파이프라인을 찾아봅니다.
 
