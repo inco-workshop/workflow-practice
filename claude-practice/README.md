@@ -1,4 +1,4 @@
-# ajou-bootcamp-2026
+# Claude Code 실습
 
 **KRAS G12C Drug Discovery Mini Project** — Claude Code를 research agent로 사용해
 신약 후보를 "추천"받는 대신, **검증 가능한 연구 과정**을 만들어 보는 실습입니다.
@@ -10,25 +10,14 @@ Claude Code가 세션 시작 시 자동으로 읽습니다.
 
 ## 1. 환경 준비
 
-### 방법 A. GitHub Codespaces (권장)
-
-이 저장소에서 **Code → Codespaces → Create codespace on main**.
-
-컨테이너가 뜨면 실습에 필요한 것이 모두 설치된 상태입니다.
-터미널에 `Setup complete!`가 보이면 준비가 끝난 것입니다.
-
-> 무엇이 설치되는지는 [.devcontainer/post-create.sh](.devcontainer/post-create.sh) 참고
-
-### 방법 B. 로컬 환경
-
-Codespaces를 쓰지 않는 경우 Claude Code를 직접 설치합니다.
+실습 환경(Codespaces)에 Claude Code가 이미 설치되어 있습니다.
+`claude-practice` 디렉토리로 이동해서 시작합니다.
 
 ```bash
-curl -fsSL https://claude.ai/install.sh | bash
+cd claude-practice
 ```
 
-설치 후 새 터미널을 열어 `claude --version`으로 확인합니다.
-명령을 못 찾으면 `$HOME/.local/bin`이 `PATH`에 있는지 보세요.
+> 이 디렉토리에서 실행해야 [CLAUDE.md](CLAUDE.md)의 연구 규칙이 적용됩니다.
 
 ---
 
@@ -73,7 +62,7 @@ claude
 이 폴더의 파일을 읽고, 수정하고, 실행해도 되는지 묻는 확인입니다.
 실습에서 Claude가 분석 스크립트를 만들고 실행해야 하므로 허용해야 진행됩니다.
 
-경로가 `/workspaces/ajou-bootcamp-2026`인지 확인하고 선택하세요.
+경로가 `claude-practice`로 끝나는지 확인하고 선택하세요.
 처음 여는 폴더마다 한 번씩 묻습니다.
 
 ### 모델 선택
@@ -124,10 +113,13 @@ claude
 
 ---
 
-## 3. 연구 도구 설치 — BioMCP · ToolUniverse
+## 3. (선택) 연구 도구 설치 — BioMCP · ToolUniverse
 
-이 실습은 유전자·변이·논문·구조·화합물 데이터를 직접 조회합니다.
-그 통로가 되는 도구 두 가지를 Claude Code 플러그인으로 설치합니다.
+> **이번 실습에서는 건너뜁니다.** 연구 산출물이 이미 준비되어 있어서 데이터 조회가
+> 필요 없습니다. 아래는 연구를 처음부터 직접 수행할 때 필요한 도구 안내입니다.
+
+연구를 직접 수행하는 경우 유전자·변이·논문·구조·화합물 데이터를 조회하는
+통로가 되는 도구 두 가지를 Claude Code 플러그인으로 설치합니다.
 
 | 도구 | 쓰임 |
 | --- | --- |
@@ -200,29 +192,43 @@ ToolUniverse는 CLI 설치 없이 플러그인만 넣으면 됩니다.
 
 ---
 
-## 4. 프롬프트 시작 예시
+## 4. 실습 — 연구 산출물을 Nextflow 파이프라인으로
 
-`claude`를 실행한 뒤 아래를 그대로 붙여넣습니다.
+이 디렉토리에는 [CLAUDE.md](CLAUDE.md)의 워크플로우에 따라 수행된 연구 산출물
+(research plan, evidence table, ligand landscape, candidate ranking, 검증 감사,
+분석 스크립트)이 이미 들어 있습니다. 이 산출물을 소재로,
+**분석 과정을 재실행 가능한 Nextflow 파이프라인으로 재구성**하는 것이 이번 실습입니다.
+
+**Step 1.** 먼저 산출물을 둘러봅니다. Claude에게 물어보세요.
 
 ```
-KRAS G12C를 표적으로 하는 새로운 신약 후보를 탐색하고 싶어.
-
-Sotorasib을 출발점으로 해서, KRAS G12C를 표적으로 하는 알려진 리간드와 관련 근거를 조사하고, 후속 연구에서 우선 검증할 만한 후보를 찾아줘.
-
-이 프로젝트에 설정되어 있는 지침을 따라 연구를 진행해줘.
-단계적으로 진행하되, 중요한 연구 방향을 결정하거나 다음 단계로 넘어가기 전에는 현재까지의 결과와 다음에 하려는 일을 나에게 설명하고 허락을 받아줘.
+이 디렉토리의 연구 산출물이 어떤 과정으로 만들어진 건지 요약해줘.
+CLAUDE.md의 어떤 규칙이 어떤 파일에 반영되어 있는지도 짚어줘.
 ```
 
-마지막 두 문단이 핵심입니다.
-[CLAUDE.md](CLAUDE.md)에 Phase와 CHECKPOINT가 정의되어 있어서, 이렇게만 지시하면
-Claude가 research plan → evidence → ligand landscape → 비교 분석 → 후보 → 검증 감사
-순서를 스스로 밟으면서 **체크포인트마다 멈추고 확인을 받습니다.**
+**Step 2.** 분석 과정을 Nextflow 파이프라인으로 재구성합니다.
 
-멈춰 섰을 때가 실습의 본론입니다. 그대로 통과시키지 말고 되물어 보세요.
+```
+이 연구의 분석 단계들을 Nextflow 파이프라인으로 재구성해줘.
+nextflow-pipeline 디렉토리를 만들어서 main.nf와 nextflow.config를 작성하고,
+각 process는 실제 도구 없이도 구조를 확인할 수 있게 stub 블록을 포함해줘.
+어떤 파일이 왜 생성되는지 README로 설명해줘.
+```
 
-- `이 IC50은 biochemical이야 cellular야? assay 조건은?`
+**Step 3.** Claude가 만든 파이프라인을 직접 검증합니다.
+
+```bash
+cd nextflow-pipeline
+nextflow run main.nf -stub-run
+```
+
+**AI가 만든 결과를 그대로 믿지 않고 직접 실행해서 확인하는 것**까지가 실습입니다.
+
+궁금한 것은 계속 되물어 보세요.
+
+- `이 process의 입출력이 03_ligand_landscape.md의 어떤 단계에 해당해?`
+- `stub 말고 실제로 돌리려면 뭐가 더 필요해?`
 - `이건 관찰이야 추론이야? PDB ID랑 PMID 알려줘`
-- `구조 근거만으로 그렇게까지 말할 수 있어?`
 
 ---
 
