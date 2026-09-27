@@ -85,14 +85,14 @@ cd ..
 
 ---
 
-**Step 1.** hello-world.nf 파일을 수정합니다.
+**Step 1.** 왼쪽 파일 탐색기에서 `hello-world.nf` 파일을 더블클릭하여 에디터로 엽니다.
 
 ```bash
-# hello-world.nf 파일 열기(또는 더블클릭)
-vim hello-world.nf
+# 터미널에서 열고 싶다면
+code hello-world.nf
 ```
 
-**Step 2.** 텍스트 수정 모드로 전환 (키보드 `a`) 후, `publishDir` function 설정합니다. (indentation)
+**Step 2.** `publishDir` function 을 추가합니다. (indentation)
 
 ```bash
 process sayHello {
@@ -101,7 +101,9 @@ process sayHello {
     output: # 이하 생략
 ```
 
-**Step 3.** hello-world.nf 스크립트를 저장 후 나갑니다. [ESC] - `:wq!` - [ENTER]
+**Step 3.** 파일을 저장합니다. (`Ctrl+S`, Mac은 `Cmd+S`)
+
+> (선택) vim이 익숙하다면: `vim hello-world.nf` → `a`로 수정 모드 진입 → 수정 → [ESC] - `:wq!` - [ENTER]
 
 **Step 4.** hello-world.nf 스크립트를 구동 후, 결과를 확인합니다. (Resume)
 
@@ -123,14 +125,9 @@ cat output.txt
 
 ---
 
-**Step 1.** hello-world.nf 파일을 수정합니다.
+**Step 1.** 에디터에서 `hello-world.nf` 파일을 다시 엽니다. (더블클릭 또는 `code hello-world.nf`)
 
-```bash
-# hello-world.nf 파일 열기(또는 더블클릭)
-vim hello-world.nf
-```
-
-**Step 2.** 텍스트 수정 모드로 전환 (키보드 `a`) 후, `input` 설정, `script` 수정, `workflow` 수정 합니다.
+**Step 2.** `input` 설정, `script` 수정, `workflow` 수정 합니다.
 
 ```bash
 process sayHello {
@@ -153,7 +150,7 @@ workflow {
 }
 ```
 
-**Step 3.** hello-world.nf 스크립트를 저장 후 나갑니다. [ESC] - `:wq!` - [ENTER]
+**Step 3.** 파일을 저장합니다. (`Ctrl+S`, Mac은 `Cmd+S`)
 
 **Step 4.** hello-world.nf 스크립트를 구동 후, 결과를 확인합니다. (Resume)
 

@@ -1,4 +1,6 @@
 {
     // Dark theme for the workshop
-    "workbench.colorTheme": "Default Dark Modern"
+    "workbench.colorTheme": "Default Dark Modern",
+    // 저장 시 자동 포매팅으로 실습 코드가 재정렬되는 것을 방지
+    "editor.formatOnSave": false
 }
