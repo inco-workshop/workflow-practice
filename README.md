@@ -173,8 +173,8 @@ cat output.txt
 **Step 1.** `oncoanalyser` 디렉토리로 이동합니다.
 
 ```bash
-# 현재 위치(hello-nextflow/results)에서 두 단계 위로 올라간 뒤 oncoanalyser로 진입
-cd ../../oncoanalyser
+# 현재 위치(hello-nextflow)에서 한 단계 위로 올라간 뒤 oncoanalyser로 진입
+cd ../oncoanalyser
 
 # 현재 위치 확인
 pwd
