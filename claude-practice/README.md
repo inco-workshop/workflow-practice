@@ -234,16 +234,16 @@ nextflow run main.nf -stub-run
 
 ## 산출물
 
-| 파일                     | 내용                                          |
-| ------------------------ | --------------------------------------------- |
-| 01_research_plan.md      | 계획 + 도구 가용성 (재확인 반영)              |
-| 02_evidence_table.md     | RQ1 evidence A–F + Not Found 10건             |
-| 03_ligand_landscape.md   | RQ2 4경로 열거 + 함정 3건                     |
-| 04_candidate_ranking.md  | Tier A/B/C + 감사 후속 수정                   |
-| 05_verification_audit.md | CHECKPOINT 4 재검증                           |
-| results/final_report.md  | 최종 10개 섹션                                |
-| analysis/                | 재실행 가능 스크립트 5개 + 원자료 mmCIF + TSV |
-| logs/                    | 성공·실패 tool call 전량, 계획 변경 사유      |
+| 파일                     | 내용                                              |
+| ------------------------ | ------------------------------------------------- |
+| 01_research_plan.md      | 계획 + 도구 가용성 (재확인 반영)                  |
+| 02_evidence_table.md     | RQ1 evidence A–F + Not Found 10건                 |
+| 03_ligand_landscape.md   | RQ2 4경로 열거 + 함정 3건                         |
+| 04_candidate_ranking.md  | Tier A/B/C + 감사 후속 수정                       |
+| 05_verification_audit.md | CHECKPOINT 4 재검증                               |
+| results/final_report.md  | 최종 10개 섹션                                    |
+| analysis/                | 비교 분석 md 2개 + 재실행 가능 스크립트 + PDB/mmCIF 원자료 4개 |
+| ligand_visualization.html | ligand-protein 3D 인터랙티브 시각화              |
 
 ![산출물 파일 목록](docs/images/outputs-explorer.png)
 
@@ -263,6 +263,11 @@ nextflow run main.nf -stub-run
 
 인터랙티브 시각화 결과 보기!!
 
+[ligand_visualization.html](ligand_visualization.html)을 열어 확인합니다.
+(탐색기에서 우클릭 → **Open Preview**, 또는 다운로드 후 브라우저에서 열기)
+
+이 파일은 아래 프롬프트 한 줄로 만들어진 것입니다. 직접 다시 만들어 봐도 좋습니다.
+
 ```
-우리가 진행한 research에서 ligand-protein을 3d 시각화로 html로 만들어줄래? 
+우리가 진행한 research에서 ligand-protein을 3d 시각화로 html로 만들어줄래?
 ```
