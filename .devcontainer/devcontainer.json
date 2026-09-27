@@ -17,13 +17,25 @@
         "HOST_PROJECT_PATH": "/workspaces/workflow-practice",
         "SHELL": "/bin/bash" // Ush bash
     },
+    "secrets": {
+        "ANTHROPIC_API_KEY": {
+            "description": "Anthropic Console에서 발급한 API Key를 입력하세요."
+        }
+    },
     "onCreateCommand": "bash .devcontainer/setup.sh",
     "customizations": {
         "vscode": {
-            "extensions": ["nf-core.nf-core-extensionpack"],
+            "extensions": [
+                "nf-core.nf-core-extensionpack",
+                "anthropic.claude-code",
+                "ms-python.python",
+                "ms-python.vscode-pylance"
+            ],
             // Use Python from conda
             "settings": {
-                "python.defaultInterpreterPath": "/opt/conda/bin/python"
+                "python.defaultInterpreterPath": "/opt/conda/bin/python",
+                // Dark theme for the workshop
+                "workbench.colorTheme": "Default Dark Modern"
             },
             // Use bash
             "terminal.integrated.defaultProfile.linux": "bash"

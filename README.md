@@ -1,6 +1,6 @@
 
 
-# 인코워크숍 글로컬대학 - 부산대학교
+# KOBIC 오프라인 교육 (26-09-28)
 
 [1. 실습 환경 세팅](#1-실습-환경-세팅)
 
@@ -13,6 +13,8 @@
 ​	[2.3 Nextflow 변수 설정](#23-nextflow-변수-설정)
 
 [3. nf-core/oncoanalyser 실습](#3-nf-coreoncoanalyser-실습)
+
+[4. Claude Code 실습](#4-claude-code-실습)
 
 ---------
 
@@ -195,4 +197,19 @@ nextflow run nf-core/oncoanalyser -r 2.3.0 -profile docker,test --outdir ./
 
 
 
-26.02.10, (주)인실리코젠, 박소희
+## 4. Claude Code 실습
+
+**Step 1.** `claude-practice` 디렉토리로 이동합니다.
+
+```bash
+cd claude-practice
+```
+
+**Step 2.** 실습 안내는 [claude-practice/README.md](claude-practice/README.md)를 참고합니다.
+
+연구 규칙과 워크플로우는 [claude-practice/CLAUDE.md](claude-practice/CLAUDE.md)에 정의되어 있고,
+`claude-practice` 디렉토리에서 Claude Code를 실행하면 자동으로 읽습니다.
+
+
+
+26.09.28, (주)인실리코젠, 박소희
