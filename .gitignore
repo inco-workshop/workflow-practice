@@ -1,1 +1,6 @@
 .DS_Store
+
+# Nextflow 실행 산출물
+work/
+.nextflow/
+.nextflow.log*

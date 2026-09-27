@@ -210,23 +210,42 @@ CLAUDE.md의 어떤 규칙이 어떤 파일에 반영되어 있는지도 짚어�
 
 ```
 이 연구의 분석 단계들을 Nextflow 파이프라인으로 재구성해줘.
-nextflow-pipeline 디렉토리를 만들어서 main.nf와 nextflow.config를 작성하고,
+my-pipeline 디렉토리를 만들어서 main.nf와 nextflow.config를 작성하고,
 각 process는 실제 도구 없이도 구조를 확인할 수 있게 stub 블록을 포함해줘.
 어떤 파일이 왜 생성되는지 README로 설명해줘.
+
+연구 Phase를 새로 시작하지는 말고, 이미 있는 산출물을 파이프라인으로 옮기는 작업만 해줘.
 ```
 
-**Step 3.** Claude가 만든 파이프라인을 직접 검증합니다.
+**Step 3.** Claude가 만든 파이프라인을 직접 실행해서 검증합니다.
 
 ```bash
-cd nextflow-pipeline
+cd my-pipeline
 nextflow run main.nf -stub-run
 ```
 
+`-stub-run`은 각 process의 `stub` 블록만 실행하는 모드입니다. 실제 분석 도구가 없어도
+**파이프라인의 구조(process 연결과 입출력 흐름)가 올바른지** 몇 초 만에 확인할 수 있습니다.
+
 **AI가 만든 결과를 그대로 믿지 않고 직접 실행해서 확인하는 것**까지가 실습입니다.
+
+**Step 4.** 미리 준비된 파이프라인과 비교해 봅니다.
+
+[nextflow-pipeline/](nextflow-pipeline/)에 같은 분석을 옮긴 파이프라인이 들어 있습니다.
+내가 만든 것과 무엇이 다른지 보세요.
+
+```bash
+cd ../nextflow-pipeline
+nextflow run main.nf -stub-run
+```
+
+> **Claude Code를 쓸 수 없는 경우** Step 1~3을 건너뛰고 이 단계만 진행해도 됩니다.
+> 파이프라인을 읽고 실행해 보는 것만으로도 "분석 과정을 재실행 가능한 형태로 남긴다"는
+> 핵심은 확인할 수 있습니다. 자세한 설명은 [nextflow-pipeline/README.md](nextflow-pipeline/README.md) 참고.
 
 궁금한 것은 계속 되물어 보세요.
 
-- `이 process의 입출력이 03_ligand_landscape.md의 어떤 단계에 해당해?`
+- `이 process의 입출력이 04_comparative_analysis.md의 어떤 단계에 해당해?`
 - `stub 말고 실제로 돌리려면 뭐가 더 필요해?`
 - `이건 관찰이야 추론이야? PDB ID랑 PMID 알려줘`
 
@@ -244,6 +263,7 @@ nextflow run main.nf -stub-run
 | results/final_report.md  | 최종 10개 섹션                                    |
 | analysis/                | 비교 분석 md 2개 + 재실행 가능 스크립트 + PDB/mmCIF 원자료 4개 |
 | ligand_visualization.html | ligand-protein 3D 인터랙티브 시각화              |
+| nextflow-pipeline/       | 위 분석을 Nextflow로 옮긴 파이프라인 (실습 Step 4) |
 
 ![산출물 파일 목록](docs/images/outputs-explorer.png)
 

@@ -1,0 +1,5 @@
+name,pdb_id,format,chains
+sotorasib,6OIM,pdb,A
+adagrasib,6UT0,pdb,A;B;C;D
+divarasib,9DMM,cif,A
+RMC-6291,9BFX,cif,A;C
