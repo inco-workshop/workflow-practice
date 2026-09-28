@@ -2,5 +2,11 @@
     // Dark theme for the workshop
     "workbench.colorTheme": "Default Dark Modern",
     // 저장 시 자동 포매팅으로 실습 코드가 재정렬되는 것을 방지
-    "editor.formatOnSave": false
+    "editor.formatOnSave": false,
+
+    // --- Live Preview (HTML 미리보기) ---
+    // 3D 시각화는 WebGL을 쓰므로 새 브라우저 탭에서 여는 편이 안정적이다
+    "livePreview.openPreviewTarget": "External Browser",
+    // 파일을 저장하면 미리보기가 바로 갱신된다
+    "livePreview.autoRefreshPreview": "On All Changes"
 }

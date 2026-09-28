@@ -1,0 +1,11 @@
+{
+    // 이 저장소를 열면 설치를 권장하는 확장 목록
+    "recommendations": [
+        // HTML 결과물(3D 시각화 등) 미리보기
+        "ms-vscode.live-server",
+        // Claude Code
+        "anthropic.claude-code",
+        // Nextflow / nf-core
+        "nf-core.nf-core-extensionpack"
+    ]
+}
