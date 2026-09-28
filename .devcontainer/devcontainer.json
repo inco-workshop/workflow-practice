@@ -31,7 +31,9 @@
                 "nf-core.nf-core-extensionpack",
                 "anthropic.claude-code",
                 "ms-python.python",
-                "ms-python.vscode-pylance"
+                "ms-python.vscode-pylance",
+                // HTML 결과물(3D 시각화 등) 미리보기용
+                "ms-vscode.live-server"
             ],
             // Use Python from conda
             "settings": {
