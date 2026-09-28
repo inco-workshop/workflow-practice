@@ -57,7 +57,11 @@ uvx --version
 echo
 echo "[3/4] Installing Claude Code..."
 
-curl -fsSL https://claude.ai/install.sh | bash
+# 워크숍 자료(스크린샷·안내)와 화면이 일치하도록 버전을 고정한다.
+# 설치 스크립트는 stable | latest | 특정 버전을 인자로 받는다.
+CLAUDE_CODE_VERSION="2.1.241"
+
+curl -fsSL https://claude.ai/install.sh | bash -s "$CLAUDE_CODE_VERSION"
 
 
 # --------------------------------------------------
