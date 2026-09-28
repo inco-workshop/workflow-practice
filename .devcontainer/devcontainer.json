@@ -1,7 +1,8 @@
 //
-// MAIN PRODUCTION DEVCONTAINER CONFIG
-// Uses image that is pre-built and pushed to GitHub
-// See .github/.devcontainer/devcontainer.json for build
+// 워크숍 실습 환경
+//  - Nextflow 25.04.3 (nextflow-io/training 이미지)
+//  - Claude Code (setup.sh에서 설치)
+//  - ANTHROPIC_API_KEY (Codespace 생성 시 입력)
 //
 {
     "name": "workflow-practice",
@@ -22,7 +23,8 @@
             "description": "Anthropic Console에서 발급한 API Key를 입력하세요."
         }
     },
-    "onCreateCommand": "bash .devcontainer/setup.sh",
+    "postCreateCommand": "bash .devcontainer/setup.sh",
+    "waitFor": "postCreateCommand",
     "customizations": {
         "vscode": {
             "extensions": [

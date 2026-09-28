@@ -1,6 +1,0 @@
-{
-    "id": "conda-channels",
-    "name": "Nextflow Training Conda Channels",
-    "description": "Sets default conda channels for Nextflow Training",
-    "installsAfter": ["ghcr.io/rocker-org/devcontainer-features/miniforge"]
-}
